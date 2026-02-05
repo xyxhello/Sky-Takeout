@@ -18,7 +18,6 @@ import com.sky.result.PageResult;
 import com.sky.service.EmployeeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
@@ -66,7 +65,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employee;
     }
 
-
+    /**
+     * 新增员工
+     * @param employeeDTO
+     */
     public void save(EmployeeDTO employeeDTO) {
 
             Employee employee = new Employee();
@@ -99,8 +101,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         Page<Employee> page = employeeMapper.pageQuery(employeePageQueryDTO);
 
         Long total = page.getTotal();
-        List<Employee> rescrds = page.getResult();
-        return new PageResult(total,rescrds);
+        List<Employee> records = page.getResult();
+        return new PageResult(total,records);
     }
 
     /**
